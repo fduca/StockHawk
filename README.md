@@ -7,8 +7,8 @@ In this project, you will productionize an app, taking them from a functional st
 
 
 ## Getting started
-1.Clone the project in your computer
-2.Open the project using Android Studio (File->Open...->Choose the directory where you have clone the project)
-3.Build the project (Build->Rebuild the project)
-4.Start the application
+1.Clone the project in your computer  
+2.Open the project using Android Studio (File->Open...->Choose the directory where you have clone the project)  
+3.Build the project (Build->Rebuild the project)  
+4.Start the application  
 
