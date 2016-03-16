@@ -1,8 +1,10 @@
 # StockHawk
-Stock Hawk project implementation from the Udacity Android Nanodegree program https://www.udacity.com/course/android-developer-nanodegree--nd801. 
+Stock Hawk project implementation from the Udacity Android Nanodegree program https://www.udacity.com/course/android-developer-nanodegree--nd801. The app is using Yahoo Finance API https://developer.yahoo.com/finance/ to get the stock information. Please be aware that Yahoo Finance API is limited to non-commercial use only. See information on (Yahoo Usage Policy)[https://policies.yahoo.com/us/en/yahoo/guidelines/ydn/index.htm] to learn about acceptable uses. 
 
-## Project description
+## Project scope
 In this project, you will productionize an app, taking them from a functional state to a production-ready state. To do this, you will find and handle error cases, add accessibility features, allow for localization, add widgets, and add a library.
+
+
 
 ## Getting started
 1.Clone the project in your computer
@@ -10,5 +12,3 @@ In this project, you will productionize an app, taking them from a functional st
 3.Build the project (Build->Rebuild the project)
 4.Start the application
 
-## Things to know before you launch the application
-The application has been uploaded on github without the API key. t's highly unsafe (and often breaks the Terms of Service) to include API keys in public repos, so I need to remove mine. Feel free to insert yours under <tbc>
