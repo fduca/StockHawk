@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by sam_chordas on 10/8/15.
@@ -66,7 +67,8 @@ public class Utils {
             change = change.substring(0, change.length() - 1);
         }
         change = change.substring(1, change.length());
-        double round = (double) Math.round(Double.parseDouble(change) * 100) / 100;
+
+        double round = (double) Math.round(parseDoubleSafe(change) * 100) / 100;
         change = String.format(Locale.getDefault(), "%.2f", round);
         StringBuffer changeBuffer = new StringBuffer(change);
         changeBuffer.insert(0, weight);
@@ -96,5 +98,14 @@ public class Utils {
             e.printStackTrace();
         }
         return builder.build();
+    }
+
+
+    private static double parseDoubleSafe(String value){
+        try {
+            return Double.parseDouble(value);
+        } catch (Exception exc){
+            return 0;
+        }
     }
 }

@@ -12,6 +12,7 @@
   <string name="error_saving">This stock is already saved!</string>
   <string name="widget_title">Today\'s Market</string>
   <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+  <string name="string_symbol">symbol</string>
   <!-- accessibility part -->
   <string name="accessibility_plus_button">Add stock quote</string>
 </resources>
