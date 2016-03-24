@@ -43,11 +43,10 @@ public class Utils {
                 int count = Integer.parseInt(jsonObject.getString(KEY_COUNT));
                 if (count == 1) {
                     jsonObject = jsonObject.getJSONObject(KEY_RESULTS)
-                            .getJSONObject("quote");
-                    String name = jsonObject.getString(KEY_NAME);
-                    if (!name.equalsIgnoreCase("null")) {
-                        batchOperations.add(buildBatchOperation(jsonObject));
-                    }
+                            .getJSONObject(KEY_QUOTE);
+                    ContentProviderOperation obj = buildBatchOperation(jsonObject);
+                    if (obj != null)
+                        batchOperations.add(obj);
                 } else {
                     resultsArray = jsonObject.getJSONObject(KEY_RESULTS).getJSONArray(KEY_QUOTE);
 
@@ -78,9 +77,8 @@ public class Utils {
             change = change.substring(0, change.length() - 1);
         }
         change = change.substring(1, change.length());
-
-        double round = (double) Math.round(parseDoubleSafe(change) * 100) / 100;
-        change = String.format(Locale.getDefault(), "%.2f", round);
+        double round = (double) Math.round(Double.parseDouble(change) * 100) / 100;
+        change = String.format("%.2f", round);
         StringBuffer changeBuffer = new StringBuffer(change);
         changeBuffer.insert(0, weight);
         changeBuffer.append(ampersand);
@@ -97,12 +95,12 @@ public class Utils {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (changes != null && !changes.equalsIgnoreCase("null")) {
+        Log.d("values", changes);
+        if (changes != null && changes != "null") {
             try {
                 String change = jsonObject.getString(KEY_CHANGE);
-                builder.withValue(QuoteColumns.SYMBOL, jsonObject.getString(KEY_SYMBOL));
+                builder.withValue(QuoteColumns.SYMBOL, jsonObject.getString(QuoteColumns.SYMBOL));
                 builder.withValue(QuoteColumns.BIDPRICE, truncateBidPrice(jsonObject.getString(KEY_BID)));
-
                 builder.withValue(QuoteColumns.PERCENT_CHANGE, truncateChange(
                         jsonObject.getString(KEY_CHANGEPERC), true));
                 builder.withValue(QuoteColumns.CHANGE, truncateChange(change, false));
@@ -119,14 +117,5 @@ public class Utils {
             return builder.build();
         }
         return null;
-    }
-
-
-    private static double parseDoubleSafe(String value) {
-        try {
-            return Double.parseDouble(value);
-        } catch (Exception exc) {
-            return 1;
-        }
     }
 }
